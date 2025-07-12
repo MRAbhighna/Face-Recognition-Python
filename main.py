@@ -168,7 +168,11 @@ while True:
         # Higher confidence means lower similarity, potentially labeling more known faces as "Unknown".
         # Experiment with this value to find the best balance.
 
-        if round(confidence) > 65:  # Adjust this threshold as needed
+        if confidence > 100:
+            confindence = 0
+            text = "Unknown"
+            color = (255, 255, 255)
+        elif confidence > 65:  # Adjust this threshold as needed
             text = f"{name} ({int(confidence)}%)"
             color = (0, 255, 0) # Green for known faces
         else:
